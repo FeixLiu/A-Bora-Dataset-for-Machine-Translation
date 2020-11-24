@@ -83,6 +83,7 @@ for language in languages:
     tensor = model('fwd', x=word_ids, lengths=lengths, langs=langs, causal=False).contiguous()
     print(tensor.size())
     output = open('./emb/' + language + '.emb.vec', 'wb')
+    output.write(str(len(sentences)).encode('utf-8') + ' '.encode('utf-8') + str(512).encode('utf-8') + '\n'.encode('utf-8'))
     for i in range(len(sentences_copy)):
         output.write(sentences_copy[i].encode('utf-8') + ' '.encode('utf-8'))
         for q in tensor[0][i].tolist():
