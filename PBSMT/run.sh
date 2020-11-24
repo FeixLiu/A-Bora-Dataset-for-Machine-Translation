@@ -11,7 +11,7 @@ set -e
 # Data preprocessing configuration
 #
 
-N_MONO=10000000  # number of monolingual sentences for each language
+N_MONO=185000  # number of monolingual sentences for each language
 N_THREADS=48     # number of threads in data preprocessing
 SRC=bora           # source language
 TGT=es           # target language
@@ -81,10 +81,6 @@ cat $ORIGIN_DATA_PATH/$TGT.test >> $TGT_TEST
 cat ORIGIN_EMBEDDING_PATH/$SRC.emb.vec >> $EMB_PATH/$SRC.emb.vec
 cat ORIGIN_EMBEDDING_PATH/$TGT.emb.vec >> $EMB_PATH/$TGT.emb.vec
 
-#
-# Download and install tools
-#
-
 # Check Moses files
 if ! [[ -f "$TOKENIZER" && -f "$NORM_PUNC" && -f "$INPUT_FROM_SGM" && -f "$REM_NON_PRINT_CHAR" && -f "$TRAIN_TRUECASER" && -f "$TRUECASER" && -f "$DETRUECASER" && -f "$TRAIN_MODEL" ]]; then
   echo "Some Moses files were not found."
@@ -101,18 +97,6 @@ if ! [[ -f "$TRAIN_LM" ]]; then
   echo "Please install KenLM."
   exit
 fi
-
-echo "begin downloading muse"
-
-# Download MUSE
-#if [ ! -d "$MUSE_PATH" ]; then
-#  echo "Cloning MUSE from GitHub repository..."
-#  git clone https://github.com/facebookresearch/MUSE.git
-#  cd $MUSE_PATH/data/
-#  chmod +x get_evaluation.sh
-#  ./get_evaluation.sh
-#fi
-#echo "MUSE found in: $MUSE_PATH"
 
 # Set embedding path
 if [ "$SRC" == "es" ]; then EMB_SRC=$EMB_PATH/es.emb.vec; fi
