@@ -48,10 +48,11 @@ def to_bpe(sentences):
 
     return sentences_bpe
 
-languages = ['es', 'bora']
-for language in languages:
+languages_vocab = ['es.vocab_1', 'es.vocab_2', 'es.vocab_3', 'bora.vocab']
+embd_name = ['es.emb_1', 'es.emb_1', 'es.emb_1', 'bora.emb.vec']
+for i in range(4):
     sentences = []
-    with open('../augmented_tokenized_data/' + language + '.vocab', encoding='utf-8') as file:
+    with open('../augmented_tokenized_data/' + languages_vocab[i], encoding='utf-8') as file:
         for line in file:
             line = line.rstrip()
             sentences.append(line)
@@ -82,7 +83,7 @@ for language in languages:
 
     tensor = model('fwd', x=word_ids, lengths=lengths, langs=langs, causal=False).contiguous()
     print(tensor.size())
-    output = open('./emb/' + language + '.emb.vec', 'wb')
+    output = open('./emb/' + embd_name[i], 'wb')
     output.write(str(len(sentences)).encode('utf-8') + ' '.encode('utf-8') + str(512).encode('utf-8') + '\n'.encode('utf-8'))
     for i in range(len(sentences_copy)):
         output.write(sentences_copy[i].encode('utf-8') + ' '.encode('utf-8'))
