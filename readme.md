@@ -1,4 +1,4 @@
-# Readme
+# A Bora Language Dateset for Machine Translation
 ## Introduction
 - This is the project for the Boston University 2020 Fall CS591-W1 Toward Universal Natural Language Understanding
 - This project mainly collects a dataset for Bora language (a low-resource language). 
