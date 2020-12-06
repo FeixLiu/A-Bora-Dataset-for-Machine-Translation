@@ -1,25 +1,25 @@
 # A Bora Language Dateset for Machine Translation
 ## Introduction
 - This is the project for the Boston University 2020 Fall CS591-W1 Toward Universal Natural Language Understanding
-- This project mainly collects a dataset for Bora language (a low-resource language). 
-- First use TF-IDF and KNN data augmentation methods on the data, then use the dataset to train a language model MLM. With the pre-trained language model, this project will get the embeddings for every word in the vocabulary. Further use the dataset and the embeddings to train two unsupervised machine translation models: NMT and PBMST to verify the performance of the dataset with the Bleu score. 
-- The result shows that the BLEU score is higher for the dataset with augmentation than that without augmentation.
+- This project mainly collects the dataset for Bora language (a low-resource language). 
+- First, use TF-IDF and KNN data augmentation methods on the dataset, then use the dataset to train a language model MLM. With the pre-trained language model, the project will get the embeddings for every word in the vocabulary. Further, use the dataset and the embeddings to train two unsupervised machine translation models: NMT and PBMST to verify the performance of the dataset with the BLEU score. 
+- The result shows that the BLEU score is higher for the dataset with the augmentation than that without the augmentation.
 
 ## Folder structure
 - PBSMT
-    - The codes for training unsupervised PBSMT model and translating sentences from source language to target language.
+    - The codes for training the unsupervised PBSMT model and translating sentences from the source language to the target language.
 - augmented_tokenized_data
-    - The tokenized data for augmented Bora dataset and for Spanish dataset
+    - The tokenized data for the augmented Bora dataset and for the Spanish dataset
 - data_augmentation
     - The codes for TF-IDF augmentation and word embeddings augmentation
 - origin_data
     - The origin data for Bora and Spanish
 - shell
-    - Some usedful shell scripts
+    - Some useful shell scripts
 
 ## How to run
 ### Dependencies
-- A Nvidia GPU is required for some parts of this paper
+- A Nvidia GPU is required for some parts of the project
 - [python3/3.6.5](https://www.python.org/downloads/release/python-365/)
 - [NumPy](https://numpy.org/)
 - [PyTorch](https://pytorch.org/)(currently tested on version 1.0)
@@ -81,12 +81,12 @@ chmod +x get_emb.sh
 ```
 
 ### Translation Model 
-#### Unsupervised PBSMT:
+#### (1) Unsupervised PBSMT Model:
 The related GitHub repositioies are [https://github.com/facebookresearch/UnsupervisedMT](https://github.com/facebookresearch/UnsupervisedMT) and [https://github.com/facebookresearch/MUSE](https://github.com/facebookresearch/MUSE).
 
 Running the PBSMT approach requires to have a working version of Moses. On some systems Moses is not very straightforward to compile, and it is sometimes much simpler to download the binaries directly.
 
-Once you have a working version of Moses, edit the ```MOSES_PATH``` variable inside the ```PBSMT/run.sh``` script to indicate the location of Moses directory. Then, go back to the root path of the project and simply run:
+Once you have a working version of Moses, edit the ```MOSES_PATH``` value at the line 39 in the ```PBSMT/run.sh``` script to indicate the location of your Moses directory. Then, go back to the root path of the project and simply run:
 ```
 cd PBSMT
 ./run.sh
@@ -118,14 +118,13 @@ The script will successively:
 - TGT target language (default Spanish)
 
 The result is stored in ```./PBSMT/moses_train_bora-es```.
-#### Unsupervised Neural Machine Translation Model:
+#### (2) Unsupervised Neural Machine Translation Model:
 1. Go to the root path of the project:
 2. Download the code for Unsupervised Neural Machine Translation Model:
 ```shell
 git clone https://github.com/artetxem/undreamt.git
 ```
-3. Train the neural matchine translation model:
-This script may take 5 days to run.
+3. Train the neural matchine translation model: this script may take 5 days to run.
 ```shell
 cd undreamt
 mkdir dumped
@@ -136,7 +135,7 @@ python train.py --embedding_size 512 --save_interval 10000 --log_interval 1000 -
 cp ../augmented_tokenized_data/bora.test input
 python translate.py ./dumped/es_bora_aug.final.src2trg.pth --input ./input --output ./output
 ```
-5. Download the output and compute the Bleu score from: https://www.letsmt.eu/Bleu.aspx
+5. Download the output and compute the BLEU score from: https://www.letsmt.eu/Bleu.aspx
 
 ## Team Members
 - Changhao Liang (U16843909) 
