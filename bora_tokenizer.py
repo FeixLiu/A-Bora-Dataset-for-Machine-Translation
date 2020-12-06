@@ -22,7 +22,7 @@ for data in datas:
             lines.append(line)
 
     lines_cp = []
-    punctuations = [',', '.', '?', '—', ';', '(', ')', '¿', '!', ':', '“', '”', '‘', '’', '¡']
+    punctuations = [',', '.', '?', '—', ';', '(', ')', '¿', '!', ':', '“', '”', '‘', '’', '¡']  # punctuations
     for line in lines:
         line = line.replace('\n', '').split(' ')
         for i in range(0, 10000):

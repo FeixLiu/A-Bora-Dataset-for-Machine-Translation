@@ -19,6 +19,7 @@
 
 ## How to run
 ### Dependencies
+- A Nvidia GPU is required for some parts of this paper
 - [python3/3.6.5](https://www.python.org/downloads/release/python-365/)
 - [NumPy](https://numpy.org/)
 - [PyTorch](https://pytorch.org/)(currently tested on version 1.0)

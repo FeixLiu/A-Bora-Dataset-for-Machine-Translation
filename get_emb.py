@@ -48,7 +48,7 @@ def to_bpe(sentences):
 
     return sentences_bpe
 
-languages_vocab = ['es.vocab_1', 'es.vocab_2', 'es.vocab_3', 'bora.vocab']
+languages_vocab = ['es.vocab_1', 'es.vocab_2', 'es.vocab_3', 'bora.vocab']  # four files name for vocab
 embd_name = ['es.emb_1', 'es.emb_1', 'es.emb_1', 'bora.emb.vec']
 for i in range(4):
     sentences = []

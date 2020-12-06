@@ -8,3 +8,4 @@ cat ../../augmented_tokenized_data/es.valid >> bora_es/bora_es.valid
 cat ../../augmented_tokenized_data/bora.test >> bora_es/bora_es.test
 cat ../../augmented_tokenized_data/es.test >> bora_es/bora_es.test
 cd ..
+clear
