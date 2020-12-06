@@ -143,3 +143,6 @@ python translate.py ./dumped/es_bora_aug.final.src2trg.pth --input ./input --out
 - Qi Yin (U31787103)
 - Yuang Liu  (U99473611)
 - Zixiang Wei (U97992068)
+
+## Final Presentation Slides
+https://docs.google.com/presentation/d/1UcUY5e7uAcgTtbi4m8fwY4Ry1N1ue0DjvOGzxf_AVgc/edit?usp=sharing
